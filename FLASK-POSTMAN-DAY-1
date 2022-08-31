@@ -1,0 +1,28 @@
+#flask is just a python library
+from flask import Flask, request, jsonify
+
+#ccreating an object of flask where all the names of going to import in it
+app = Flask(__name__)
+
+#creating a route address to tag this code from anywhere. Like LinkedIn tag feature.
+@app.route('/xyz',methods=['GET','POST'])
+def test():
+    if(request.method == 'POST'):
+        a = request.json['n1']
+        b = request.json['n2']
+        result = a+b
+        return jsonify(str(result))
+    
+#example 2
+@app.route('/abc',methods=['GET','POST'])
+def test2():
+    if (request.method == 'POST'):
+        a = request.json['num1']
+        b = request.json['num2']
+        result = a + b
+        return jsonify(str(result))
+    # print(a+b)
+    # return a+b
+    
+if __name__=='__main__':
+    app.run()
